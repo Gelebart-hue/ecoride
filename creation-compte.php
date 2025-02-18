@@ -6,10 +6,10 @@
     </head>
     <body>
         <nav>
-            <button onclick="window.location.href = 'http://localhost/Projet/index.php';">Accueil</button>
-            <button onclick="window.location.href = 'http://localhost/Projet/covoiturages.php';">Covoiturages</button>
-            <button onclick="window.location.href = 'http://localhost/Projet/creation-compte.php';">Connexion</button>
-            <button onclick="window.location.href = 'http://localhost/Projet/contact.php';">Contact</button>
+            <button onclick="window.location.href = 'http://localhost/Projet/ecoride/index.php';">Accueil</button>
+            <button onclick="window.location.href = 'http://localhost/Projet/ecoride/covoiturages.php';">Covoiturages</button>
+            <button onclick="window.location.href = 'http://localhost/Projet/ecoride/creation-compte.php';">Connexion</button>
+            <button onclick="window.location.href = 'http://localhost/Projet/ecoride/contact.php';">Contact</button>
         </nav>
 
         <div>
