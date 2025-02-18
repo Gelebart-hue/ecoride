@@ -7,10 +7,10 @@
     </head>
     <body>
         <nav>
-            <button onclick="window.location.href = 'http://localhost/Projet/index.php';">Accueil</button>
-            <button onclick="window.location.href = 'http://localhost/Projet/covoiturages.php';">Covoiturages</button>
-            <button onclick="window.location.href = 'http://localhost/Projet/creation-compte.php';">Connexion</button>
-            <button onclick="window.location.href = 'http://localhost/Projet/index.php';">Contact</button>
+            <button onclick="window.location.href = 'http://localhost/Projet/ecoride/index.php';">Accueil</button>
+            <button onclick="window.location.href = 'http://localhost/Projet/ecoride/covoiturages.php';">Covoiturages</button>
+            <button onclick="window.location.href = 'http://localhost/Projet/ecoride/creation-compte.php';">Connexion</button>
+            <button onclick="window.location.href = 'http://localhost/Projet/ecoride/index.php';">Contact</button>
         </nav>
         <img src="image.jpg" width="100%" height="800px">
         <div>
