@@ -23,31 +23,39 @@
                     <input type="date" id="date" name ="date" required>
                     <input type="submit" value="Rechercher">
                 </DIV>
-                <DIV>
-                    <label for="pseudo">Pseudo</label>
-                    <input type="text" id="pseudo" name ="pseudo" size="10">
-                    <label for="photo">Photo</label>
-                    <input type="file" id="photo" name ="photo" size="10">
-                    <label for="note">Note</label>
-                    <input type="range" id="note" name ="note" min="1" max="5">
-                    <label for="nb_place">Nombre de places</label>
-                    <input type="number" id="nb_place" name ="nb_place">
-                    <label for="prix">Prix</label>
-                    <input type="number" id="prix" name ="prix">
-                </DIV>
-                <DIV>
-                    <label for="date_depart">Date de départ</label>
-                    <input type="date" id="date_depart" name ="date_depart">
-                    <label for="heure_depart">Heure de départ</label>
-                    <input type="date" id="heure_depart" name ="heure_depart">
-                    <label for="date_arrivee">Date d'arrivée</label>
-                    <input type="date" id="date_arrivee" name ="date_arrivee">
-                    <label for="heure_arrivee">Heure d'arrivée</label>
-                    <input type="text" id="heure_arrivee" name ="heure_arrivee">
+            </form>
+            	
+            <script type="text/javascript">
+            /* Voici la fonction javascript qui change la propriété "display"
+            pour afficher ou non le div selon que ce soit "none" ou "block". */
+ 
+            function AfficherMasquer()
+            {
+                divInfo = document.getElementById('divacacher');
+ 
+                if (divInfo.style.display == 'none')
+                    divInfo.style.display = 'block';
+                else
+                    divInfo.style.display = 'none';
+                }
+            </script>
+ 
+ 
+            <!-- Ca c'est le div en question qui possède l'id indiqué dans
+            la fonction. -->
+            <div id="divacacher" style="display:none;">        
                     <label for="voyage_ecologique">Voyage écologique</label>
                     <input type="checkbox" id="voyage_ecologique" name ="voyage_ecologique">
-                </DIV>
-            </form>
+                    <label for="prix">Prix maximum</label>
+                    <input type="number" id="prix" name ="prix">
+                    <label for="duree">Durée maximum</label>
+                    <input type="number" id="duree" name ="duree">
+                    <label for="note">Note</label>
+                    <input type="range" id="note" name ="note" min="1" max="5">
+                    
+                    <!-- La c'est le bouton qui va afficher le div en cliquant dessus. -->
+            </DIV>
+            <input type="button" value="Filtre" onClick="AfficherMasquer()" />
         </div>
 
         <?php
@@ -66,10 +74,10 @@
 
                     $stmt = $conn->prepare("SELECT *
                     FROM covoiturage, depose
-                    LEFT JOIN utilisateur ON utilisateur.utilisateur_id = depose.utilisateur_id
-                    LEFT JOIN voiture ON voiture.voiture_id = voiture_id 
-                    LEFT JOIN avis ON avis.avis_id = depose.avis_id
-                    WHERE covoiturage.lieu_depart=:depart AND covoiturage.lieu_arrivee=:arrivee AND covoiturage.date_depart=:date"
+                    JOIN utilisateur ON utilisateur.utilisateur_id = depose.utilisateur_id
+                    JOIN voiture ON voiture.voiture_id = voiture_id
+                    JOIN avis ON avis.avis_id = depose.avis_id
+                    WHERE lieu_depart=:depart AND lieu_arrivee=:arrivee AND date_depart=:date"
                     );
 
 
@@ -80,7 +88,8 @@
 
                     $res = $stmt->fetchAll();
                     foreach ( $res as $row ) {
-                        echo "<DIV><FORM action='detail-voyage.php' method='GET'><button>Détail</button></FORM></DIV>";
+                        echo "<DIV><FORM action='detail-voyage.php' method='GET'>Pseudo : ".$row['pseudo']."Photo : ".$row['photo']."Note : ".$row['note']."Nombre de place restante : 
+".$row['nb_place']."Prix : ".$row['prix_personne']."Date de départ : ".$row['date_depart']."Heure de départ : ".$row['heure_depart']."Date d'arrivée : ".$row['date_arrivee']."Heure arrivee : ".$row['heure_arrivee']."Voyage écologique : ".$row['energie']."<button>Détail</button></FORM></DIV>";
                     }
 
                     } catch (PDOException $pe) {
